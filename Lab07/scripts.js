@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded",function() {
+document.addEventListener("DOMContentLoaded", function () {
     const todoList = document.getElementById("todo-list");
     const todoInput = document.getElementById("todo-input");
     const addButton = document.getElementById("add-button");
@@ -18,17 +18,21 @@ document.addEventListener("DOMContentLoaded",function() {
         }
     }
 
-   
+    function deleteTodo(index) {
+        todos.splice(index, 1);
+        renderTodoList();
+    }
+
 
     function renderTodoList() {
         console.log(todos);
         todoList.innerHTML = "";
 
-        for(let i = 0; i < todos.length; i++) {
+        for (let i = 0; i < todos.length; i++) {
             const todoItem = todos[i];
             const listItem = document.createElement("li");
             listItem.textContent = todoItem.text;
-            if(todoItem.completed) {
+            if (todoItem.completed) {
                 listItem.classList.add("completed");
             }
             const deleteButton = document.createElement("button");
@@ -45,8 +49,8 @@ document.addEventListener("DOMContentLoaded",function() {
 
     addButton.addEventListener("click", addTodo);
 
-    todoInput.addEventListener("keypress", function(event) {
-        if(event.key === "Enter") {
+    todoInput.addEventListener("keypress", function (event) {
+        if (event.key === "Enter") {
             addTodo();
         }
     });
