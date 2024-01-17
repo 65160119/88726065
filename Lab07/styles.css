@@ -2,13 +2,13 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align: center;
     margin: 20px;
-    background-color: #f8f8f8;
+    background-color: #ff0000;
 }
 
 h1 {
     color: #333;
     font-size: 24px;
-    background-color: #bbffb2;
+    background-color: #eeff00;
     padding: 15px;
     border-radius: 5px;
     color: rgb(0, 0, 0);
@@ -22,11 +22,11 @@ ul {
 }
 
 li {
-    background-color: #fff;
+    background-color: #00f2ff;
     padding: 15px;
     margin: 10px 0;
     border-radius: 8px;
-    box-shadow: 0 2px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px rgba(255, 248, 248, 0.1);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -34,7 +34,7 @@ li {
 }
 
 li.completed {
-    background-color: #d4edda;
+    background-color: #0cf7ff;
     text-decoration: line-through;
 }
 
@@ -49,8 +49,8 @@ input[type="text"] {
 
 button {
     padding: 12px 24px;
-    background-color: #ffaced;
-    color: white;
+    background-color: #00ff0d;
+    color: rgb(0, 0, 0);
     border: none;
     border-radius: 8px;
     cursor: pointer;
