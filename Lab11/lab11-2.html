@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue.js - Form input binding</title>
+    <script src="https://unpkg.com/vue@3.4.21/dist/vue.global.js"></script>
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Form Validation Demo</h1>
+    <div id="app">
+        <form @submit.prevent="checkForm">
+            <p v-if="errors.length" class="error"> <!-- Added class "error" -->
+                <b>Please correct the following error(s):</b>
+                <ul>
+                    <li v-for="error in errors" class="error">{{ error }}</li> <!-- Added class "error" -->
+                </ul>
+            </p>
+            <p>
+                <label for="name">Name</label>
+                <input type="text" name="name" id="name" v-model="name">
+            </p>
+            <p>
+                <label for="age">Age</label>
+                <input type="number" name="age" id="age" v-model="age" min="0">
+            </p>
+            <p>
+                <label for="movie">Your favorite Movie</label>
+                <select name="movie" id="movie" v-model="movie">
+                    <option disabled value="">Please select one</option>
+                    <option>Star Wars</option>
+                    <option>Vanilla Sky</option>
+                    <option>Atomic Blonde</option>
+                </select>
+            </p>
+            
+            <p>
+                <input type="radio" id="male" value="Male" @change="picked = $event.target.value" :checked="picked === 'Male'">
+                <label for="male">Male</label>
+                <input type="radio" id="female" value="Female" @change="picked = $event.target.value" :checked="picked === 'Female'">
+                <label for="female">Female</label>
+            </p>
+            <p>
+                <input type="submit" value="Submit">
+            </p>
+        </form>
+    </div>
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    errors: [],
+                    name: null,
+                    age: null,
+                    movie: null,
+                    picked: null
+                }
+            },
+            methods: {
+                checkForm(e) {
+                    this.errors = [];
+                    if (!this.name) this.errors.push("Name required.");
+                    if (!this.age) this.errors.push("Age required.");
+                    if (!this.movie) this.errors.push("Favorite movie required.");
+                    if (!this.picked) this.errors.push("Gender required.");
+
+                    if (this.errors.length === 0) {
+                        alert('Form submitted successfully!');
+                        // You can also submit the form here if needed
+                    }
+                }
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>
